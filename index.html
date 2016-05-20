@@ -1,9 +1,14 @@
 <html>
   <head>
     <meta charset="UTF-8"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>react demo</title>
   </head>
   <body>
     <div id="root"></div>
-    <script src="/dist/bundle.js"></script>
+    <!-- fuk 公共代码必须放到应用代码前面 否则 webpackJsonp is not defined -->
+    <script src="/static/vendors.js"></script>
+    <script src="/static/app.js"></script>
   </body>
 </html>
