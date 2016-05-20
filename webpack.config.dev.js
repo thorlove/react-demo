@@ -9,7 +9,7 @@ module.exports = {
         app: [
             'eventsource-polyfill',
             'webpack-hot-middleware/client',
-            './src/main'
+            './src/main.js'
         ],
         vendors: ['react']
     },
