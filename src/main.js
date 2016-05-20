@@ -1,5 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { App } from '.app/App';
+import { App } from './app/App';
+import './styles/common.css';
+import './styles/font.css';
 
-render(<App />, document.getElementById('root'));
+render(<div><i className="material-icons md-36"></i> <App /></div>, document.getElementById('root'));
