@@ -1,16 +1,18 @@
 var path = require('path');
 var webpack = require('webpack');
+var Html = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'source-map',
     entry: {
-        app: path.resolve(__dirname, 'app/main.js'),
+        app: './src/main.js',
         vendors: ['react']
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/static/'
+        filename: '[name]-[hash].js',
+        publicPath: ''
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -24,18 +26,23 @@ module.exports = {
                 warnings: false
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+        new Html({
+            title: 'reac-demo',
+            filename: 'index.html',
+            template: path.join(__dirname, 'src/template/index.ejs')
+        }),
+        new webpack.optimize.CommonsChunkPlugin('vendors', '[name]-[hash].js'),
+        new ExtractTextPlugin('style-[contenthash].css')
     ],
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 loaders: ['babel'],
-                include: path.join(__dirname, 'app'),
-                exclude: /node_modules/
+                include: path.join(__dirname, 'src')
             }, {
                 test: /\.css$/,
-                loaders: 'style!css'
+                loader: ExtractTextPlugin.extract('style', 'css')
             }, {
                 test: /\.(png|jpg)$/,
                 loaders: 'url?limit=25000'
