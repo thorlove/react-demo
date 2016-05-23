@@ -7,3 +7,33 @@ html, body, #root {
 .container {
   text-align: center;
 }
+.commentBox {
+  font-family: -webkit-pictograph;
+  font-size: 16px;
+}
+h1 {
+border-bottom-width: 1px;border-bottom-style: ridge;padding: 5px;
+}
+
+.commentBox .commentList {
+  padding-left: 15px;
+}
+
+.commentList p {
+  line-height: 5px;
+}
+.commentList span {
+  font-weight: bold;
+  font-size: 14px;
+  font-style: italic;  
+}
+
+.commentBox .comment {
+  line-height: 5px;
+}
+
+.commentBox .commentForm {
+  background-color: #F3F3F3;
+  padding: 15px 30px;
+  margin-top: 20px;
+}
