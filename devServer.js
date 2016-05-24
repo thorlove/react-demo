@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+var _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
 var webpack = require('webpack');
@@ -42,8 +43,29 @@ app.post('/api/comments', function (req, res) {
             id: Date.now(),
             author: req.body.author,
             comment: req.body.comment,
+            del:false
         };
         comments.push(newComment);
+        fs.writeFile(COMMENTS_FILE, JSON.stringify(comments, null, 4), function (err) {
+            if (err) {
+                console.error(err);
+                process.exit(1);
+            }
+            res.json(comments);
+        });
+    });
+});
+
+
+app.delete('/api/comments', function (req, res) {
+    fs.readFile(COMMENTS_FILE, function (err, data) {
+        if (err) {
+            console.error(err);
+            process.exit(1);
+        }
+        console.log(req.query.id);
+        var comments = JSON.parse(data);
+        _.set(comments,'['+_.findIndex(comments,comment=>{return comment.id==req.query.id})+'].del',true);
         fs.writeFile(COMMENTS_FILE, JSON.stringify(comments, null, 4), function (err) {
             if (err) {
                 console.error(err);

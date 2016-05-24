@@ -11,7 +11,7 @@ module.exports = {
             'webpack-hot-middleware/client',
             './src/main.js'
         ],
-        vendors: ['react']
+        vendors: ['react','redux','react-redux']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

@@ -7,7 +7,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         app: './src/main.js',
-        vendors: ['react']
+        vendors: ['react','redux','react-redux']
     },
     output: {
         path: path.join(__dirname, 'dist'),
