@@ -63,15 +63,16 @@ app.delete('/api/comments', function (req, res) {
             console.error(err);
             process.exit(1);
         }
-        console.log(req.query.id);
         var comments = JSON.parse(data);
-        _.set(comments,'['+_.findIndex(comments,comment=>{return comment.id==req.query.id})+'].del',true);
+        var comment;
+        _.set(comments,'['+_.findIndex(comments,_comment=>{comment =_comment; return _comment.id==req.body.id})+'].del',true);
+        
         fs.writeFile(COMMENTS_FILE, JSON.stringify(comments, null, 4), function (err) {
             if (err) {
                 console.error(err);
                 process.exit(1);
             }
-            res.json(comments);
+            res.json(comment);
         });
     });
 });

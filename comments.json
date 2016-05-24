@@ -3,7 +3,7 @@
         "id": 1464002029968,
         "author": "aaa",
         "comment": "aaa",
-        "del": false
+        "del": true
     },
     {
         "id": 1464002098157,
@@ -51,12 +51,30 @@
         "id": 1464077394608,
         "author": "cds",
         "comment": "ces1",
-        "del": false
+        "del": true
     },
     {
         "id": 1464088474118,
         "author": "sdf",
         "comment": "sdf",
+        "del": true
+    },
+    {
+        "id": 1464099434097,
+        "author": "fff",
+        "comment": "ffff",
+        "del": true
+    },
+    {
+        "id": 1464100477053,
+        "author": "tester",
+        "comment": "测试3",
+        "del": true
+    },
+    {
+        "id": 1464102076728,
+        "author": "tester",
+        "comment": "测试4",
         "del": false
     }
 ]
