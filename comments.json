@@ -33,7 +33,7 @@
         "id": 1464073068252,
         "author": "robin",
         "comment": "测试js--start<script>console.log('test')</script>--end",
-        "del": false
+        "del": true
     },
     {
         "id": 1464073611620,
@@ -76,5 +76,35 @@
         "author": "tester",
         "comment": "测试4",
         "del": false
+    },
+    {
+        "id": 1464146521118,
+        "author": "tester",
+        "comment": "test test",
+        "del": false
+    },
+    {
+        "id": 1464148256731,
+        "author": "tester",
+        "comment": "mmmm",
+        "del": true
+    },
+    {
+        "id": 1464148957492,
+        "author": "tester",
+        "comment": "CC",
+        "del": true
+    },
+    {
+        "id": 1464163152058,
+        "author": "sss",
+        "comment": "sss",
+        "del": true
+    },
+    {
+        "id": 1464163280509,
+        "author": "ttt",
+        "comment": "ttt",
+        "del": true
     }
 ]

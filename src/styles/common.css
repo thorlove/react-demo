@@ -25,18 +25,34 @@ h3 {
     padding-left: 15px;
 }
 
-.commentList p {
+.commentBox .commentFilter span{
+    background: #E8E9EA;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.commentBox .commentList p {
     line-height: 5px;
 }
 
-.commentList span {
+.commentBox .commentList span {
     font-weight: bold;
     font-size: 14px;
     font-style: italic;
 }
 
 .commentBox .comment {
-    line-height: 5px;
+    border-bottom-style: inset;
+    border-bottom-color: #95A7C1;
+    border-bottom-width: 1px;
+    padding: 5px;
+    margin-top: 5px;   
+}
+
+.del {
+    text-decoration: line-through;
+    font-style: italic;
+    color: #BDB9B9;
 }
 
 .commentBox .commentForm {
@@ -45,12 +61,12 @@ h3 {
     margin-top: 20px;
 }
 
-.commentSearch {
+.commentBox .commentSearch {
     padding: 30px 30% 30px 30%;
     width: 40%;
     background-color: #F3F3F3;
 }
 
-.commentSearch input {
+ .commentBox .commentSearch input {
     width: 33%;
 }

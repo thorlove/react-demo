@@ -1,7 +1,9 @@
 import React from 'react';
-import ReactDOM,{ render } from 'react-dom';
-import { App } from './app/App';
-import {CommentSearch,CommentBox} from './app/commons/CommentBox.js';
+import ReactDOM, { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import {CommentBox} from './app/components/CommentBox.js';
 
 import './styles/common.css';
 import './styles/font.css';
