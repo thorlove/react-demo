@@ -99,7 +99,6 @@ class CommentFilter extends Component {
             </div>
         );
     }
-
 }
 
 class CommentBox extends Component {

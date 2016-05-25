@@ -1,3 +1,4 @@
+import {creatorAction} from '../utils/index.js';
 const ADD_COMMENT = 'ADD_COMMENT';
 const DEL_COMMENT = 'DEL_COMMENT';
 const SEARCH_COMMENT = 'SEARCH_COMMENT';
@@ -9,23 +10,11 @@ const FILTER_PARAMS = {
     SHOW_DEL: 'SHOW_DEL'
 }
 
-export {ADD_COMMENT, DEL_COMMENT, SEARCH_COMMENT, FILTER_COMMENT, FILTER_PARAMS}
+export const actions = {
+    addComment: creatorAction(ADD_COMMENT, 'comment'),
+    delComment: creatorAction(DEL_COMMENT, 'id'),
+    searcComment: creatorAction(SEARCH_COMMENT, 'text'),
+    filterComment: creatorAction(FILTER_COMMENT, 'filter')
+};
 
-function addComment(comment) {
-    return { type: ADD_COMMENT, comment:comment };
-}
-
-function delComment(id) {
-    return { type: DEL_COMMENT, id:id };
-}
-
-function searcComment(text) {
-    return { type: SEARCH_COMMENT, text:text };
-}
-
-function filterComment(filter) {
-    return { type: FILTER_COMMENT, filter:filter };
-}
-
-export {addComment, delComment, searcComment, filterComment}
-
+export const CONSTANTS = { ADD_COMMENT, DEL_COMMENT, SEARCH_COMMENT, FILTER_COMMENT, FILTER_PARAMS };

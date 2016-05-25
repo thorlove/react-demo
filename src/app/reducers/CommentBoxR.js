@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import * as actions from '../actions/CommentBoxA.js';
+import {CONSTANTS} from '../actions/CommentBoxA.js';
 
-function filterComment(state = actions.FILTER_PARAMS.SHOW_ALL, action) {
+function filterComment(state = CONSTANTS.FILTER_PARAMS.SHOW_ALL, action) {
     switch (action.type) {
-        case actions.FILTER_COMMENT:
+        case constants.FILTER_COMMENT:
             return action.filter;
         default:
             return state;
@@ -12,7 +12,7 @@ function filterComment(state = actions.FILTER_PARAMS.SHOW_ALL, action) {
 
 function seracrComment(state = '', action) {
     switch (action.type) {
-        case actions.SEARCH_COMMENT:
+        case CONSTANTS.SEARCH_COMMENT:
             return action.text;
         default:
             return state;
@@ -21,19 +21,19 @@ function seracrComment(state = '', action) {
 
 function optComment(state = [], action) {
     switch (action.type) {
-        case actions.DEL_COMMENT:
+        case CONSTANTS.DEL_COMMENT:
             break;
-        case actions.ADD_COMMENT:
+        case CONSTANTS.ADD_COMMENT:
             return action.comment;
         default:
             return state;
     }
 }
 
-const CommentBoxApp =  combineReducers({
+const commentBoxReducers =  combineReducers({
     filterComment,
     seracrComment,
     optComment
-}); 
+});
 
-export default CommentBoxApp;
+export default commentBoxReducers;
