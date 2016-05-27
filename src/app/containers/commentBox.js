@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {actions ,CONSTANTS} from '../actions/CommentBoxA.js';
-import {CommentFilter, CommentSearch, CommentList, Comment, CommentForm} from '../components/CommentBox.js';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import CommentFilter from './CommentFilter' ;
+import CommentSearch  from './CommentSearch';
+import CommentForm from './CommentForm';
+import CommentList from './CommentList';
 
 
 class CommentBox extends Component {

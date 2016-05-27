@@ -1,107 +1,13 @@
 import React, {Component} from "react";
-import ReactDOM from 'react-dom';
+import FiltersParams from '../constants/FiltersParams';
 
-class Comment extends Component {
-    constructor(props) {
-        super();
-        this.state = { className: "comment" };
-    }
+import CommentFilter from './CommentFilter' ;
+import CommentSearch  from './CommentSearch';
+import CommentForm from './CommentForm';
+import CommentList from './CommentList';
 
-    rawComment() {
-        return { __html: this.props.children || '未定义'.toString() };
-    }
 
-    componentWillMount() {
-        this.state.className = this.props.comment.del ? 'comment del':'comment';
-    }
-
-    handleDel() {
-        // const tag = ReactDOM.findDOMNode(this);
-        // $(tag).fadeOut();
-        // unmountComponentAtNode(ReactDOM.findDOMNode(this));
-
-        this.props.comment.del = true;
-        this.setState({className:'comment del'});
-        $.ajax({
-            url: '/api/comments',
-            type: 'DELETE',
-            data: { id: this.props.comment.id },
-            dataType: 'json',
-            error: (xhr, status, err) => {
-                this.setState({className:'comment'})
-                console.log(xhr, err);
-            }
-        })
-    }
-
-    render() {
-        return (
-            <div className={this.state.className} ref="comment">
-                <p dangerouslySetInnerHTML={this.rawComment() }></p>
-                <span>{"-" + this.props.comment.author}</span>
-                <sapn onClick={() => { this.handleDel() } } style={{ marginLeft: '10em' }} className="material-icons md-14 md-inactive">close</sapn>
-            </div>
-        )
-    }
-}
-class CommentForm extends Component {
-    handleSave() {
-        const comment = ReactDOM.findDOMNode(this.refs.txt_comment).value;
-        const author = ReactDOM.findDOMNode(this.refs.txt_author).value;
-        const form = ReactDOM.findDOMNode(this.refs.form);
-        this.props.onSubmit({ "comment": comment, "author": author });
-        form.reset();
-    }
-
-    render() {
-        return (
-            <form className="commentForm" ref = "form">
-                <p>内容：<input type="text" placeholder = "说些什么吧" ref="txt_comment"/></p>
-                <p>名字：<input type="text" placeholder = "告诉我你的名字" ref="txt_author"/></p>
-                <button type="button" onClick={() => this.handleSave() }>保存</button>
-            </form>
-        )
-    }
-}
-class CommentList extends Component {
-    render() {
-        var commentNodes = this.props.comments.map((obj) => { return (<Comment comment={obj} key={"comment_" + obj.id}>{obj.comment}</Comment>) });
-        return (
-            <div  className = "commentList">{commentNodes}</div>
-        );
-    }
-}
-
-class CommentSearch extends Component {
-    handleChange(e) {
-        this.props.onChange(ReactDOM.findDOMNode(this.refs.txt_search).value);
-    }
-
-    render() {
-        return (
-            <div className="commentSearch">
-                <input type="text" onInput={(e) => { this.handleChange(e) } } placeholder="输入搜索关键字" ref = "txt_search"/>
-            </div>
-        );
-    }
-}
-
-class CommentFilter extends Component {
-    handleClick(filter) {
-        this.props.onClick(filter);
-    }
-    render() {
-        return (
-            <div className='commentFilter'>
-                <span onClick={() => this.handleClick('SHOW_ALL') }>全部</span>
-                <span onClick={() => this.handleClick('SHOW_USE') }>未删除</span>
-                <span onClick={() => this.handleClick('SHOW_DEL') }>回收站</span>
-            </div>
-        );
-    }
-}
-
-class CommentBox extends Component {
+export default class CommentBox extends Component {
     constructor(props) {
         super();
         this.state = { comments: [] };
@@ -152,15 +58,15 @@ class CommentBox extends Component {
         }
     }
     filterComment(filter) {
-        if (filter == 'SHOW_ALL') {
+        if (filter == FiltersParams.SHOW_ALL) {
             this.setState({ comments: this.globComments });
-        } else if (filter == 'SHOW_USE') {
+        } else if (filter == FiltersParams.SHOW_USE) {
             this.setState({
                 comments: this.globComments.filter(item => {
                     return !item.del;
                 })
             });
-        } else if (filter == 'SHOW_DEL') {
+        } else if (filter == FiltersParams.SHOW_DEL) {
             this.setState({
                 comments: this.globComments.filter(item => {
                     return item.del;
@@ -186,5 +92,3 @@ class CommentBox extends Component {
         );
     }
 }
-
-export {CommentBox,CommentFilter,CommentSearch,CommentList,Comment,CommentForm};
