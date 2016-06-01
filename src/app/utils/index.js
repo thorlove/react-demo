@@ -1,5 +1,8 @@
 import assign from './assign.js';
-import creatorAction from './creatorAction.js';
+import connectComponent from './connectComponent'
 
 
-export {assign,creatorAction};
+export {
+assign,
+connectComponent
+};

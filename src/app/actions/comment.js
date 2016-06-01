@@ -1,4 +1,4 @@
-import {creatorAction} from '../utils';
+import {createAction} from 'redux-actions';
 import * as ActionsTypes from '../constants/ActionTypes.js'
 
 export const actions = {
