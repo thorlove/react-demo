@@ -1,30 +1,46 @@
 import * as actionTypes from '../constants/ActionTypes';
 
-export function filterComment(state = CONSTANTS.FILTER_PARAMS.SHOW_ALL, action) {
-    switch (action.type) {
-        case actionTypes.FILTER_COMMENT:
-            return action.filter;
-        default:
-            return state;
-    }
+const initialState = {
+    className: '',
+    comments: []
 }
 
-export function seracrComment(state = '', action) {
-    switch (action.type) {
-        case actionTypes.SEARCH_COMMENT:
-            return action.text;
-        default:
-            return state;
-    }
+function postComment(params) {
+    
+    
 }
 
-export function optComment(state = [], action) {
-    switch (action.type) {
-        case actionTypes.DEL_COMMENT:
-            break;
+function delComment(param) { 
+    
+ }
+ 
+ function filterComment(params) {
+     
+     
+ }
+ 
+ function searchComment(params) {
+     
+ }
+
+export default function (state = initialState, action) {
+    const {payload, error, meta = {}, type} = action;
+    const {sequence = {}, id = Date.now(), text = '被隐藏', author = '匿名', del = false, searchText = '', filterText = ''} = meta;
+
+    if (sequence.type === 'start' || error) {
+        return state;
+    }
+
+    switch (type) {
         case actionTypes.ADD_COMMENT:
-            return action.comment;
+            return {};
+        case actionTypes.DEL_COMMENT:
+            return {};
+        case actionTypes.FILTER_COMMENT:
+            return {};
+        case actionTypes.SEARCH_COMMENT:
+            return {};
         default:
             return state;
     }
-}
+};

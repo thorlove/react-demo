@@ -1,6 +1,10 @@
 import createLogger from 'redux-logger';
 import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import minPendingTimeMiddleware from './minPendingTimeMiddleware';
+import promiseMiddleware from './promiseMiddleware';
+import utilsMiddleware from './utilsMiddleware';
+import asyncActionCallbackMiddleware from './asyncActionCallbackMiddleware';
 
 import reducers from '../reducers';
 
@@ -13,7 +17,11 @@ const logger = createLogger({
 });
 
 let middlewares = [
-	thunkMiddleware
+	thunkMiddleware,
+	minPendingTimeMiddleware,
+	promiseMiddleware,
+	utilsMiddleware,
+	asyncActionCallbackMiddleware
 ];
 
 if (isDebuggingInChrome) {
