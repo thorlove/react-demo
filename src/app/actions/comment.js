@@ -33,3 +33,7 @@ export const filterComment = createAction(ActionsTypes.FILTER_COMMENT, (filterTe
     }
 });
 
+export const loadComments = createAction(ActionsTypes.LOAD_COMMENT,async()=>{
+   return await commentServ.getCommentList(); 
+});
+

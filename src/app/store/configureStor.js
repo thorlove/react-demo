@@ -20,7 +20,7 @@ let middlewares = [
 	thunkMiddleware,
 	minPendingTimeMiddleware,
 	promiseMiddleware,
-	utilsMiddleware,
+	// utilsMiddleware,
 	asyncActionCallbackMiddleware
 ];
 
