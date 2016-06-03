@@ -2,7 +2,7 @@ import qs from 'query-string';
 
 
 const urlPrefix = 'http://localhost:3000/api';
-
+const __DEV__ = true;
 
 function filterJSON(res) {
 	return res.json();
@@ -23,10 +23,10 @@ function filterStatus(res) {
 
 export function get(url, params) {
 	url = urlPrefix + url;
+	
 	if (params) {
 		url += `?${qs.stringify(params)}`;
 	}
-
 	if (__DEV__) {
 		console.info(`GET: `, url);
 		console.info(`Params: `, params)

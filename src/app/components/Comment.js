@@ -8,7 +8,7 @@ export default class Comment extends Component {
     }
 
     rawComment() {
-        return { __html: this.props.children || '未定义'.toString() };
+        return { __html: this.props.children || '被隐藏'.toString() };
     }
 
     componentWillMount() {
@@ -35,12 +35,20 @@ export default class Comment extends Component {
     }
 
     render() {
+        const {className,actions,comment} = this.props;
         return (
-            <div className={this.state.className} ref="comment">
+            <div className={className} ref="comment">
                 <p dangerouslySetInnerHTML={this.rawComment() }></p>
-                <span>{"-" + this.props.comment.author}</span>
-                <sapn onClick={() => { this.handleDel() } } style={{ marginLeft: '10em' }} className="material-icons md-14 md-inactive">close</sapn>
+                <span>{"-" + comment.author}</span>
+                <sapn onClick={() => actions.delComment(comment.id) } style={{ marginLeft: '10em' }} className="material-icons md-14 md-inactive">close</sapn>
             </div>
         )
+    }
+}
+
+export const LayoutComponent = Comment;
+export function mapStateToProps(state, props) {
+    return {
+        className:state.className
     }
 }

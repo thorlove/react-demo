@@ -9,15 +9,15 @@ function isPromise(val) {
 export default function promiseMiddleware({ dispatch }) {
 	
 	return next => action => {
+		// console.log('dispatch-->',dispatch,'---action-->',action);
 		if (!isFSA(action)) {
 			return isPromise(action)
 				? action.then(dispatch)
 				: next(action);
 		}
 		const { meta = {}, payload } = action;
-
 		const id = _.uniqueId();
-
+		
 		if (isPromise(payload)) {
 			dispatch({
 				...action,
@@ -30,9 +30,9 @@ export default function promiseMiddleware({ dispatch }) {
 					}
 				}
 			});
-
+			console.log('haha i am promise',action);
 			return payload.then(
-				result => dispatch({
+				result =>dispatch({
 					...action,
 					payload: result,
 					meta: {
@@ -57,7 +57,6 @@ export default function promiseMiddleware({ dispatch }) {
 				})
 			);
 		}
-
 		return next(action);
 	};
 }

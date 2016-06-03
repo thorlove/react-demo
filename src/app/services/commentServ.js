@@ -2,7 +2,6 @@ import * as requestServ from './request';
 
 export const getCommentList = () => {
     return requestServ.get('/comments')
-        .then(data => data.data)
         .then(comments => {
             if (comments) {
                 return comments;

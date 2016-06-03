@@ -9,6 +9,7 @@ module.exports = {
         app: [
             'eventsource-polyfill',
             'webpack-hot-middleware/client',
+            'babel-polyfill',
             './src/main.js'
         ],
         vendors: ['react','redux','react-redux']

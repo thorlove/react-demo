@@ -18,10 +18,11 @@ const logger = createLogger({
 
 let middlewares = [
 	thunkMiddleware,
-	minPendingTimeMiddleware,
 	promiseMiddleware,
-	// utilsMiddleware,
-	asyncActionCallbackMiddleware
+	// asyncActionCallbackMiddleware,	
+	// minPendingTimeMiddleware,	
+	// utilsMiddleware
+
 ];
 
 if (isDebuggingInChrome) {

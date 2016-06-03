@@ -67,7 +67,7 @@ function filterComment(filterText, state) {
     }
 }
 
-export default function (state = initialState, action) {
+export default function comment(state = initialState, action) {
     const {payload, error, meta = {}, type} = action;
     const {sequence = {}, id = Date.now(), text = '被隐藏', author = '匿名', del = false, searchText = '', filterText = ''} = meta;
 
